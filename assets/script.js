@@ -1,56 +1,106 @@
-var question = document.querySelector("#questions");
+var questionEl = document.querySelector("#questions");
 var timerElement = document.querySelector("#timer-count");
+
 var startButton = document.querySelector("#start-button");
-var timer;
-var timerCount = 5;
+var restartButton = document.querySelector("#restart-button");
+var answerButton = document.querySelector('#answer-button');
+
 var answerListEl = $('#answers');
 var displayEl = $('#display');
 
 
+
+var q1;
+var q2;
+var q3;
+var q4;
+var q5;
+
+var timer;
+var timerCount = 5;
+var nextQuestion;
+
+restartButton = $('#restart-button').hide();
+
+var pr = 'Press button to play';
+var el = document.getElementById('questions');
+el.textContent = pr;
+
+//questionEl = $('#questions').hide();
+
+//init();
 // The init function is called when the page loads 
-function init() {
-    // getWins();
-    // getlosses();
-}
+//function init() {
 
-// The setTimer function starts and stops the timer and triggers winGame() and loseGame()
+// getWins();
+// getlosses();
+//}
+
+var questions;
+questions = ['Which is not an Error Name value?',
+  'How many data types?',
+  'Why use jQuery?',
+  'What does Boolean return?'
+];
+
+
+var answers;
+answers = ['A','B','C','D'
+  'How many data types?',
+  'Why use jQuery?',
+  'What does Boolean return?'
+];
+
+
+
+
+//var pr = 'Game Over :(';
+//var el = document.getElementById('questions');
+//el.textContent = pr;
+
+// The setTimer function starts and stops the timer 
 function startTimer() {
-    // Sets timer
-    timer = setInterval(function () {
-        timerCount--;
-        timerElement.textContent = timerCount;
-        if (timerCount === 0) {
-            $('#start-button').show();
-            clearInterval(timer);
-            $('#timer-count').hide();
-        }
-    }, 1000);
-}
+  // Sets timer
+  timer = setInterval(function () {
+    timerCount--;
+    timerElement.textContent = timerCount;
 
+    if (timerCount === 0) {
+      timerElement.textContent = '';
+      $('#restart-button').show();
+      gameOver();
+    }
+    //stops timer from going below 0
+    if (timerCount === 0) {
+      clearInterval(timer);
+    }
+    //  restart();
+  }, 1000);
+  return;
+}
 
 function startGame() {
-    console.log("It works!")
-    timerCount = 5;
-    $('#start-button').hide();
-    startTimer();
-    Q1();
+  console.log("Start game")
+  timerCount = 5;
+  $('#start-button').hide();
+  startTimer();
+  //questionEl = $('#questions').show();
+  questionEl.textContent = questions[0];
+
 }
 
-function Q1() {
-    question.textContent = "How do you stop a function? ";
-    renderAnswers();
-}
 
-function renderAnswers() {
-    var answers = [
-      'Return;',
-      'Quit;',
-      'Stop+',
-      'Wait:'
-    ];
-  
-    // Dynamically create buttons
-    // Create a for-loop to iterate through the letters array.
+function gameOver() {
+  // console.log("Game Over :( ");
+  var overMessage = "Game over :(";
+  var el = document.getElementById('questions');
+  el.textContent = overMessage;
+
+}
+/*
+function makeButtons {
+  // Dynamically create buttons
+    // Create a for-loop to iterate through the answers array.
     for (var i = 0; i < answers.length; i++) {
       // Create button
       var answerBtn = $('<button>');
@@ -63,31 +113,24 @@ function renderAnswers() {
       // Attach the letter element
       answerListEl.append(answerBtn);
     }
+}
+*/
+
+function nextQuestion() {
+  for (var i = 0; i < 10; i++) {
+
+
   }
-  
-  // Delegate event listener to the parent element, <div id="buttons">
-  answerListEl.on('click', function (event) {
-    var displayAnswerEl = $('<div>');
-  
-    displayAnswerEl.addClass('answer');
-  
-    // get letter from clicked letter button's `data-letter` attribute and use it for display
-   // displayAnswerEl.text($(event.target).attr('data-answer'));
-   // displayEl.append(displayAnswerEl);
-  });
-
-
-
-function gameOver() {
-    console.log("Game Over :( ");
-
 }
 
-
-
-
 startButton.addEventListener('click', function () {
-    startGame();
+  startGame();
 });
 
-init();
+restartButton.addEventListener('click', function () {
+  //reload();
+});
+
+answerButton.addEventListener('click', function () {
+  nextQuestion();
+});
