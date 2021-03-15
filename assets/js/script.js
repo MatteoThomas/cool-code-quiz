@@ -167,16 +167,3 @@ function selectAnswers() {
 document.getElementById('answerSection').style.display = 'none';
 document.getElementById('start-button').addEventListener('click', startGame);
 document.getElementById('reset-button').addEventListener('click', reset);
-//document.getElementById('answerSection').addEventListener('click', nextQuestion);
-
-
-
-// dominic timer code
-/* if (this.textContent !== questions[currentQuestionIndex].correct) {
-  timerCount -= 35;
-  if (timerCount < 0) {
-      timerCount = 0;
-  }
-  timer.textContent = timerCount;
-
-  */
