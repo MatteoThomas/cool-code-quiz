@@ -1,0 +1,46 @@
+header {
+  display: flex;
+  justify-content: center;
+  margin: 3rem auto;
+  max-width: 90vw;
+  width: 50ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#timer-count {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+  margin: 10% 20% 0;
+  background-color: #252222;
+  color: #d9e9e8;
+}
+
+.btn-red {
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  margin: 0;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid transparent;
+  outline: none;
+  color: #e6e6e6;
+  background-color: #e64c66;
+  }
+
+main {
+  
+
+  margin: 3rem auto;
+  max-width: 90vw;
+  width: 50ch;
+}
+
