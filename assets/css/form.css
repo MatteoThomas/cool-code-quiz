@@ -1,0 +1,135 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: "Nunito", sans-serif;
+}
+
+h3,
+label {
+    text-transform: uppercase;
+}
+
+.alert {
+    width: 80vw;
+    margin: 2rem auto;
+    color: #155724;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.25rem;
+    display: none;
+}
+
+.form-group input {
+    background-color: rgb(255, 65, 65);
+}
+
+.submit {
+    justify-content: center;
+    font-weight: 700;
+    margin: 50px;
+
+}
+
+#full-name {
+    font-size: xx-large;
+    text-align: center;
+}
+
+#save-later-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(54, 58, 63);
+    width: 80vw;
+    margin-bottom: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 3px;
+}
+
+label {
+    margin: 1rem 0 0;
+    display: block;
+}
+
+input {
+    font-size: 0.875em;
+    width: 100%;
+    height: 40px;
+    padding: 0px 15px 0px 15px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: xx-large;
+    outline: none;
+    color: azure;
+    background-color: #1c2025;
+    border: none;
+    border-radius: 4px;
+}
+
+
+
+button[type="submit"] {
+    background-color: rgb(247, 91, 125);
+    width: calc((100% / 2) - 3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    font-weight: 800;
+    height: 2.8rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+    color: azure;
+}
+
+
+select {
+    width: 100%;
+    height: 40px;
+    border: none;
+    padding: 0 0 0 0.5rem;
+    outline: none;
+}
+
+select:focus,
+input:focus,
+textarea:focus {}
+
+textarea {
+    width: 100%;
+    max-width: 100%;
+    height: 110px;
+    max-height: 110px;
+    padding: 15px;
+    margin: 0 0 1rem 0;
+
+    outline: none;
+    color: black;
+    font-size: 0.875em;
+    border: none;
+}
+
+/* ========MEDIA QUERIES======== */
+@media screen and (min-width: 768px) {
+
+    #save-later-form,
+    .alert {
+        width: 60vw;
+    }
+}
+
+@media screen and (min-width: 992px) {
+
+    #save-later-form,
+    .alert {
+        width: 40vw;
+    }
+}

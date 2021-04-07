@@ -1,30 +1,68 @@
 header {
   display: flex;
   justify-content: center;
-  margin: 3rem auto;
-  max-width: 90vw;
-  width: 50ch;
   margin-left: auto;
   margin-right: auto;
+  font-size: x-large;
+
+}
+
+#allInfo {
+  background-color: #353535;
+}
+
+#quest {
+  text-align: center;
+  color: azure;
+}
+
+#quiz {
+  text-align: center;
+  background-color: #353535;
+  margin: 20px;
+}
+
+#score {
+  align-items: center;
+  width: fit-content;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.5rem 1.2rem;
+  margin: 0;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid transparent;
+  outline: none;
+  color: azure;
+
+}
+
+#timer {
+  margin: 30px;
 }
 
 #timer-count {
-  display: flex;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
 }
 
 body {
-  margin: 10% 20% 0;
-  background-color: #252222;
-  color: #d9e9e8;
+  display: flex;
+  flex-direction: column;
+justify-content: center;
+  align-items: center;
+  margin: 10px 20px 0;
+  background-color: #353535;
+  color: azure;
 }
 
-.btn-red {
+#startButton {
+  align-items: center;
+  width: fit-content;
   cursor: pointer;
   text-align: center;
-  display: inline-block;
   padding: 0.5rem 1.2rem;
   margin: 0;
   text-decoration: none;
@@ -33,14 +71,68 @@ body {
   border: 1px solid transparent;
   outline: none;
   color: #e6e6e6;
-  background-color: #e64c66;
-  }
+  background-color: rgb(247, 91, 125);
+}
+
+.answerBtn {
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+  margin: 5px;
+  text-decoration: none;
+  border-radius: 0.3rem;
+  border: 1px solid transparent;
+  outline: none;
+  color: #e6e6e6;
+  background-color: rgb(247, 91, 125);
+}
 
 main {
-  
-
   margin: 3rem auto;
   max-width: 90vw;
   width: 50ch;
 }
 
+.answers {
+  padding-bottom: 10px;
+}
+
+.btn {
+  align-items: center;
+  width: fit-content;
+  cursor: pointer;
+  text-align: center;
+  font-size: large;
+  padding: 10px;
+  margin: 5px;
+  text-decoration: none;
+  border-radius: 0.3rem;
+  border: 1px solid transparent;
+  outline: none;
+  color: #444444;
+  background-color: rgb(210, 216, 127);
+}
+
+h5 {
+  font-size: medium;
+  font-weight: 300;
+  margin: 1rem;
+}
+
+
+#highScores {
+  background-color: rgb(210, 216, 127);
+  text-transform: uppercase;
+  text-align: center;
+  font-size: xx-large;
+  align-items: center;
+
+  cursor: pointer;
+  padding: 0.5rem 1.2rem;
+  margin: 0;
+  text-decoration: none;
+  border-radius: 0.3rem;
+  border: 1px solid transparent;
+  outline: none;
+  color: #2e2e2e;
+}

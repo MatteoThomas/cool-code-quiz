@@ -1,169 +1,151 @@
-var timerElement = document.querySelector("#timer-count");
-var questionEl = document.querySelector("#questions");
-var resetButton = document.querySelector("reset-button");
-var answerButton = document.querySelector("#ab");
-var startButton = document.querySelector("#start-button");
-var answerEl = document.querySelector("#answerSection");
-var timer;
-var timerCount = 7;
+(function () {
+  var content = document.getElementById("quiz");
+  var quest = document.getElementById("quest");
+  var result = document.getElementById("result");
+  var startButton = document.getElementById("startButton");
+  var timer = document.getElementById("timer");
+  var timeLeft = 20;
+  var score = document.getElementById("score");
+  var currentScore = 0;
+  var infoBack = document.getElementById("allInfo");
+  var submitBtn = document.getElementById("submit");
+  var txtInitials = document.getElementById("initials");
 
-window.onload = hideTimer();
-hideReset();
+  document.getElementById("highScores").style.visibility = "hidden";
+  document.getElementById("save-later-form").style.visibility = "hidden";
+  document.getElementById("allInfo").style.visibility = "hidden";
+  document.getElementById("score").style.visibility = "hidden";
 
-var pr = 'Press button to play';
-var el = document.getElementById('questions');
-el.textContent = pr;
+  const questions = [{
+      question: "Which is not an Error Name value?",
+      answers: ["a: Type Error", "b: Syntax Error", "c: Main Error", "d: Reference Error"],
+      correct: "c: Main Error",
+    },
 
-function reset() {
-  hideReset();
-  showStart();
-  hideTimer();
-  reload();
+    {
+      question: "What does Boolean return?",
+      answers: ["a: True/ False", "b: 1/2", "c: Yes / No", "d: Correct / Missing"],
+      correct: "a: True/ False",
+    },
 
-}
+    {
+      question: "Which is not one of the four states of promise objects",
+      answers: [" a: Fulfilled Settled", "b: Outside", "c: Pending", "d: Whole"],
+      correct: "d: Whole",
+    },
 
-function reload() {
-  location.reload();
-
-}
-
-function hideTimer() {
-  document.getElementById("timer-count").style.display = 'none';
-}
-
-function showTimer() {
-  document.getElementById("timer-count").style.display = 'initial';
-}
-
-function hideReset() {
-  document.getElementById("reset-button").style.display = 'none';
-}
-
-function showReset() {
-  document.getElementById("reset-button").style.display = 'initial';
-}
-
-function hideStart() {
-  document.getElementById("start-button").style.display = 'none';
-}
-
-function showStart() {
-  document.getElementById("start-button").style.display = 'initial';
-}
-
-function gameOver() {
-  console.log("Game over");
-  var overMessage = "Your score here";
-  var el = document.getElementById('questions');
-  el.textContent = overMessage;
-  showReset();
-  document.getElementById('answerSection').style.display = 'none';
-
-}
-
-function startTimer() {
-  var timer = setInterval(function () {
-    timerCount--;
-    timerElement.textContent = timerCount;
-
-    if (timerCount === 0) {
-      timerElement.textContent = 'Game over';
+    {
+      question: "What type of value does a string contain?",
+      answers: ["a: Numbers", "b: Text", "c: Boolean", "d: JSON"],
+      correct: "b: Text",
     }
-    if (timerCount === 0) {
-      clearInterval(timer);
+  ];
+
+  var currentQuestionIndex = 0;
+
+  function getQuestion() {
+    content.textContent = "";
+    result.textContent = "";
+    var currentQuestion = questions[currentQuestionIndex];
+    quest.textContent = currentQuestion.question;
+    score.textContent = currentScore;
+    timer.textContent = timeLeft;
+
+    for (var i = 0; i < currentQuestion.answers.length; i++) {
+      var choiceButton = document.createElement("button");
+      choiceButton.className = "answerBtn";
+      choiceButton.setAttribute("value", currentQuestion.answers[i]);
+
+      choiceButton.textContent = currentQuestion.answers[i];
+      choiceButton.onclick = choiceSelect;
+      content.appendChild(choiceButton);
+      document.getElementById("title").style.opacity = 0.2;
+    }
+    document.getElementById("allInfo").style.visibility = "visible";
+
+  }
+
+  function choiceSelect() {
+    if (this.value !== questions[currentQuestionIndex].correct) {
+      timeLeft -= 3;
+    } else {
+      currentScore += 3;
+    }
+
+    currentQuestionIndex++;
+    if (currentQuestionIndex === questions.length) {
       gameOver();
+    } else {
+      getQuestion();
     }
+  };
 
-  }, 1000);
+  function gameOver() {
+    result.textContent = "";
+    timer.textContent = "";
+    quest.textContent = "GAME OVER!";
 
-}
 
-var index = 0;
-var questions = [{
-    question: "Which is not an Error Name value?",
-    choices: ['Type Error', 'Syntax Error', 'Main Error', 'Reference Error'],
-    correct: 'Main Error'
-  },
+    content.textContent = "";
 
-  {
-    question: "What does Boolean return?",
-    choices: ['True/ False', '1/2', 'Yes / No', 'Correct / Missing'],
-    correct: 'True / False'
-  },
+    score.textContent = "Your score: " + currentScore;
+    localStorage.setItem('score', currentScore);
 
-  {
-    question: "How many values can be stored in an array",
-    choices: ['1', '2', '3', '4'],
-    correct: '4'
-  },
+    document.getElementById("save-later-form").style.visibility = "visible";
+    document.getElementById("title").style.opacity = 1;
+    document.getElementById("score").style.visibility = "visible";
 
-  {
-    question: "What type of value does a string contain?",
-    choices: ['Numbers', 'Text', 'Boolean', 'JSON'],
-    correct: 'Text'
+  };
+
+  function startTimer() {
+    var timeInterval = setInterval(function () {
+      timer.textContent = timeLeft + " seconds left";
+      timeLeft--;
+
+      if (timeLeft < 0) {
+
+        $("#timer").hide()
+        clearInterval(timeInterval);
+        gameOver();
+      } else if (currentQuestionIndex === questions.length) {
+        timer.content = "";
+        clearInterval(timeInterval);
+        gameOver();
+      }
+    }, 1000);
+  };
+
+  startButton.addEventListener("click", function () {
+    content.textContent = "";
+    $("#startButton").hide()
+    getQuestion();
+    startTimer();
+    $("#highScoresBtn").hide()
+  });
+
+  submitBtn.addEventListener("click", function () {
+    content.textContent = "";
+    $(highScoresBtn).show()
+    localStorage.setItem('initsSaved', txtInitials.value);
+    showScores()
+  });
+
+  highScoresBtn.addEventListener("click", function () {
+    content.textContent = "";
+    $(highScoresBtn).hide()
+    showScores();
+    document.getElementById("highScores").style.visibility = "visible";
+  });
+
+
+  const initials = localStorage.getItem('initsSaved');
+  const scoreSaved = localStorage.getItem('score');
+
+  function showScores() {
+    var inits = document.getElementById('highScoresI');
+    var scored = document.getElementById('highScoresS');
+    scored.textContent = scoreSaved;
+    inits.textContent = initials;
   }
-]
 
-
-
-let shuffleQuestions, currentQuestionIndex
-
-function startGame() {
-
-  document.getElementById("start-button").style.display = 'none';
-  document.getElementById('answerSection').style.display = 'initial';
-  shuffleQuestions = questions.sort(() => Math.random() - .5);
-  currentQuestionIndex = 0;
-
-  startTimer();
-  showTimer();
-  showQuestion(shuffleQuestions[currentQuestionIndex]);
-  nextQuestion();
-
-
-}
-
-function showQuestion() {
-  var currentQuestion = questions[currentQuestionIndex]
-
-  questionEl.innerText = currentQuestion.question
-
-  currentQuestion.choices.forEach(element => {
-    var button = document.createElement('button')
-    console.log(button)
-    button.classList.add('ab')
-    answerButton.innerText = element
-    answerButton.appendChild(button)
-    button.addEventListener('click', selectAnswers)
-
-  })
-}
-
-
-
-function resetQuestion() {
-  while (answerButton.firstChild) {
-    answerButton.removeChild(answerButton.firstChild)
-
-  }
-}
-
-function nextQuestion() {
-  resetQuestion()
-  showQuestion(shuffleQuestions[currentQuestionIndex])
-}
-
-function selectAnswers() {
-  if (this.textContent !== questions[currentQuestionIndex])
-    timerCount -= 5;
-  if (timerCount < 0) {
-    timerCount = 0;
-  } else {
-    timerCount += 5;
-  }
-  timer.textContent = timerCount;
-}
-
-document.getElementById('answerSection').style.display = 'none';
-document.getElementById('start-button').addEventListener('click', startGame);
-document.getElementById('reset-button').addEventListener('click', reset);
+})();
