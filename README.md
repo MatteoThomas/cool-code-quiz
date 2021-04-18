@@ -6,6 +6,7 @@
 3. [Installation](#installation)
 4. [Steps](#Steps)
 5. [Preview](#Preview)
+6. [License](#License)
 
 ## General Info
 The purpose of this app is to ask a series of multiple choice questions while a timer counts down to zero.
@@ -42,4 +43,6 @@ Initials:
 High score:  
 ![screenshot](assets/img/highscore.png)
 
+## License
+Licensed under the MIT license.
 	
