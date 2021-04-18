@@ -9,9 +9,6 @@
 4. [Installation](#installation)
 5. [Steps](#Steps)
 
-## Title
-Code Quiz
-
 ## General Info
 The purpose of this app is to ask a series of multiple choice questions while a timer counts down to zero.
 
