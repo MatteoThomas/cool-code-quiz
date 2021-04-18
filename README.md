@@ -1,11 +1,10 @@
  # Code Quiz
-
+--------------------------------------------------------------------------------------------------------
 ## Table of Contents
-1. [Title](#title)
-2. [General Info](#general-info)
-3. [Technologies](#technologies)
-4. [Installation](#installation)
-5. [Steps](#Steps)
+1. [General Info](#general-info)
+2. [Technologies](#technologies)
+3. [Installation](#installation)
+4. [Steps](#Steps)
 
 ## General Info
 The purpose of this app is to ask a series of multiple choice questions while a timer counts down to zero.
