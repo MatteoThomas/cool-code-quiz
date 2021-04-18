@@ -1,4 +1,4 @@
-# Matthew Elliott Porfolio
+# Matthew Elliott Portfolio
 
 ## Table of Contents
 1. [General Info](#general-info)
