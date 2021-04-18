@@ -16,7 +16,7 @@ The purpose of this app is to showcase my web development skills and provide con
 ## Installation
 To access the website go to https://matteothomas.github.io/MT-Portfolio/
 
-To access the repository go tohttps://github.com/MatteoThomas/MT-Portfolio
+To access the repository go to https://github.com/MatteoThomas/MT-Portfolio
 
 ## Preview
 Main page:  
