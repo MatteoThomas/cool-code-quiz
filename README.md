@@ -18,7 +18,8 @@ The purpose of this app is to ask a series of multiple choice questions while a 
 
 ## Installation
 To access the website go to https://matteothomas.github.io/04-homework-code-quiz/
-To access the repository [Github Repository](https://github.com/MatteoThomas/04-homework-code-quiz)
+
+To access the repository go to (https://github.com/MatteoThomas/04-homework-code-quiz)
 
 # Steps
 Steps taken by user
