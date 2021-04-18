@@ -5,6 +5,7 @@
 2. [Technologies](#technologies)
 3. [Installation](#installation)
 4. [Steps](#Steps)
+5. [Preview](#Preview)
 
 ## General Info
 The purpose of this app is to ask a series of multiple choice questions while a timer counts down to zero.
