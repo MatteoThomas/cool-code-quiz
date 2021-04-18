@@ -13,9 +13,7 @@ The purpose of this app is to ask a series of multiple choice questions while a 
 
 ## Technologies 
 
-[![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)](https://forthebadge.com) &nbsp; [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com)
-
-[![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)](https://forthebadge.com) &nbsp; [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com) &nbsp; [![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com)
 
 ## Installation
 To access the website go to https://matteothomas.github.io/04-homework-code-quiz/
