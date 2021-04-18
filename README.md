@@ -1,4 +1,4 @@
- # Cool Code Quiz
+# Cool Code Quiz
 
 ## Table of Contents
 1. [General Info](#general-info)
@@ -24,7 +24,7 @@ To access the website go to https://matteothomas.github.io/04-homework-code-quiz
 
 To access the repository go to https://github.com/MatteoThomas/04-homework-code-quiz
 
-# Steps
+## Steps
 Steps taken by user
 * When the user clicks the start game button the game starts and presents the first set of questions and answers.
 * The user selects an answer for each question until the quiz is complete.
