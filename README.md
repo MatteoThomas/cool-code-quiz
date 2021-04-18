@@ -1,4 +1,4 @@
- ## Code Quiz
+ ### Code Quiz
 
 ## Table of Contents
 1. [Title](#title)
