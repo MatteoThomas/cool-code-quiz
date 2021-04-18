@@ -1,4 +1,4 @@
- # Code Quiz
+ # Cool Code Quiz
 
 ## Table of Contents
 1. [General Info](#general-info)
