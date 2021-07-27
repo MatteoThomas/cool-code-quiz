@@ -5,9 +5,9 @@
   var startButton = document.getElementById("startButton");
   var timer = document.getElementById("timer");
   var timeLeft = 20;
+  var startTime = 3;
   var score = document.getElementById("score");
   var currentScore = 0;
-  var infoBack = document.getElementById("allInfo");
   var submitBtn = document.getElementById("submit");
   var txtInitials = document.getElementById("initials");
 
@@ -16,21 +16,43 @@
   document.getElementById("allInfo").style.visibility = "hidden";
   document.getElementById("score").style.visibility = "hidden";
 
-  const questions = [{
+  const soundBtn = document.getElementById("allInfo");
+  let myAudio = document.querySelector("#audio");
+  soundBtn.addEventListener("click", () => {
+    myAudio.play();
+  });
+
+  const questions = [
+    {
       question: "Which is not an Error Name value?",
-      answers: ["a: Type Error", "b: Syntax Error", "c: Main Error", "d: Reference Error"],
+      answers: [
+        "a: Type Error",
+        "b: Syntax Error",
+        "c: Main Error",
+        "d: Reference Error",
+      ],
       correct: "c: Main Error",
     },
 
     {
       question: "What does Boolean return?",
-      answers: ["a: True/ False", "b: 1/2", "c: Yes / No", "d: Correct / Missing"],
+      answers: [
+        "a: True/ False",
+        "b: 1/2",
+        "c: Yes / No",
+        "d: Correct / Missing",
+      ],
       correct: "a: True/ False",
     },
 
     {
       question: "Which is not one of the four states of promise objects",
-      answers: [" a: Fulfilled Settled", "b: Outside", "c: Pending", "d: Whole"],
+      answers: [
+        " a: Fulfilled Settled",
+        "b: Outside",
+        "c: Pending",
+        "d: Whole",
+      ],
       correct: "d: Whole",
     },
 
@@ -38,7 +60,7 @@
       question: "What type of value does a string contain?",
       answers: ["a: Numbers", "b: Text", "c: Boolean", "d: JSON"],
       correct: "b: Text",
-    }
+    },
   ];
 
   var currentQuestionIndex = 0;
@@ -62,7 +84,6 @@
       document.getElementById("title").style.opacity = 0.2;
     }
     document.getElementById("allInfo").style.visibility = "visible";
-
   }
 
   function choiceSelect() {
@@ -78,24 +99,22 @@
     } else {
       getQuestion();
     }
-  };
+  }
 
   function gameOver() {
     result.textContent = "";
     timer.textContent = "";
     quest.textContent = "GAME OVER!";
 
-
     content.textContent = "";
 
     score.textContent = "Your score: " + currentScore;
-    localStorage.setItem('score', currentScore);
+    localStorage.setItem("score", currentScore);
 
     document.getElementById("save-later-form").style.visibility = "visible";
     document.getElementById("title").style.opacity = 1;
     document.getElementById("score").style.visibility = "visible";
-
-  };
+  }
 
   function startTimer() {
     var timeInterval = setInterval(function () {
@@ -103,8 +122,7 @@
       timeLeft--;
 
       if (timeLeft < 0) {
-
-        $("#timer").hide()
+        $("#timer").hide();
         clearInterval(timeInterval);
         gameOver();
       } else if (currentQuestionIndex === questions.length) {
@@ -113,39 +131,54 @@
         gameOver();
       }
     }, 1000);
-  };
+  }
+
+  function shortTimer() {
+    var timeInterval = setInterval(function () {
+      timer.textContent = startTime + " seconds left";
+      startTime--;
+      if (timeLeft < 0) {
+        clearInterval(timeInterval);
+      } else if (timeLeft > 0) {
+        timer.content = "";
+      }
+    }, 1000);
+  }
 
   startButton.addEventListener("click", function () {
     content.textContent = "";
-    $("#startButton").hide()
-    getQuestion();
-    startTimer();
-    $("#highScoresBtn").hide()
+    $("#startButton").hide();
+    // starts 3 sec timer
+    shortTimer();
+    // delay start, etc for 3 sec
+    setTimeout(function () {
+      startTimer();
+      getQuestion();
+    }, 4000);
+    $("#highScoresBtn").hide();
   });
 
   submitBtn.addEventListener("click", function () {
     content.textContent = "";
-    $(highScoresBtn).show()
-    localStorage.setItem('initsSaved', txtInitials.value);
-    showScores()
+    $(highScoresBtn).show();
+    localStorage.setItem("initsSaved", txtInitials.value);
+    showScores();
   });
 
   highScoresBtn.addEventListener("click", function () {
     content.textContent = "";
-    $(highScoresBtn).hide()
+    $(highScoresBtn).hide();
     showScores();
     document.getElementById("highScores").style.visibility = "visible";
   });
 
-
-  const initials = localStorage.getItem('initsSaved');
-  const scoreSaved = localStorage.getItem('score');
+  const initials = localStorage.getItem("initsSaved");
+  const scoreSaved = localStorage.getItem("score");
 
   function showScores() {
-    var inits = document.getElementById('highScoresI');
-    var scored = document.getElementById('highScoresS');
+    var inits = document.getElementById("highScoresI");
+    var scored = document.getElementById("highScoresS");
     scored.textContent = scoreSaved;
     inits.textContent = initials;
   }
-
 })();
