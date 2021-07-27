@@ -5,7 +5,7 @@ This is my updated assignment. I addressed all issues of the previous submission
 ## Links
 [Github Repository](https://github.com/MatteoThomas/04-homework-code-quiz)
 
-[Code Quiz Homework](https://matteothomas.github.io/04-homework-code-quiz/)
+[Code Quiz Homework](https://matteothomas.github.io/cool-code-quiz/)
 
 ## Preview
 Game load:  
