@@ -17,7 +17,7 @@
   document.getElementById("score").style.visibility = "hidden";
 
   const soundBtn = document.getElementById("allInfo");
-  let myAudio = document.querySelector("#audio");
+  let myAudio = document.querySelector("#audioStart");
   soundBtn.addEventListener("click", () => {
     myAudio.play();
   });
@@ -128,22 +128,48 @@
       } else if (currentQuestionIndex === questions.length) {
         timer.content = "";
         clearInterval(timeInterval);
+        overSound();
         gameOver();
       }
     }, 1000);
   }
 
+  function overSound() {
+    var audio = new Audio("./assets/sfx/buzzer.wav");
+    audio.loop = false;
+    audio.play();
+    console.log("over sfx");
+  }
+  //---------------------------------------------------------------------
+
   function shortTimer() {
-    var timeInterval = setInterval(function () {
-      timer.textContent = startTime + " seconds left";
+    var startInterval = setInterval(function () {
+      timer.textContent = startTime + " seconds until start";
       startTime--;
-      if (timeLeft < 0) {
-        clearInterval(timeInterval);
-      } else if (timeLeft > 0) {
+      if (startTime >= 0) {
+        shortSound();
+      } else if ((startTime = 0)) {
         timer.content = "";
+        clearInterval(startInterval);
       }
     }, 1000);
   }
+
+  function shortSound() {
+    var audio = new Audio("./assets/sfx/tick.wav");
+    audio.loop = false;
+    audio.play();
+    console.log("tick sfx");
+  }
+
+  function startSound() {
+    var audio = new Audio("./assets/sfx/start2.wav");
+    audio.loop = false;
+    audio.play();
+    console.log("start2 sfx");
+  }
+
+  //---------------------------------------------------------------------
 
   startButton.addEventListener("click", function () {
     content.textContent = "";
@@ -154,6 +180,7 @@
     setTimeout(function () {
       startTimer();
       getQuestion();
+      startSound();
     }, 4000);
     $("#highScoresBtn").hide();
   });
